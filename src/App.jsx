@@ -8,6 +8,7 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [showVilla, setShowVilla] = useState(false);
 
   return (
     <>
@@ -31,10 +32,15 @@ function App() {
         </button>
         <button
           className="image-button"
-          onClick={() => window.open(villaImg, "_blank")}
+          onClick={() => setShowVilla(!showVilla)}
         >
-          View Villa Image
+          {showVilla ? "Hide Villa Image" : "View Villa Image"}
         </button>
+        {showVilla && (
+          <div className="villa-display">
+            <img src={villaImg} alt="Villa" className="villa-image" />
+          </div>
+        )}
       </section>
 
       <div className="ticks"></div>
